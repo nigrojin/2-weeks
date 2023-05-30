@@ -896,13 +896,483 @@
 
 
 // 필터링 작업
-var arr = ["foo", "bar", "baz"];
+// var arr = ["foo", "bar", "baz"];
 
-for (var i=0; i<arr.length; i++) {
-  if (arr[i][0] === "b") {
-    console.log(arr[i])
-  }
-}
+// for (var i=0; i<arr.length; i++) {
+//   if (arr[i][0] === "b") {
+//     console.log(arr[i])
+//   }
+// }
 
 // bar
 // baz
+
+
+// Q. 배열에 새로운 아이템을 추가해보세요 (배열의 메서드 사용)
+
+// var beers = ["Guinness", "Heineken"];
+// var americanBeer = "Budwiser";
+
+// // 맥주리스트에 미국 맥주 추가
+
+// beers.push(americanBeer);
+
+// console.log(beers) // Guinness, Heineken, Budwiser
+
+
+// // Q. 배열을 순회해서 성인의 나이만 출력해보세요
+// var ages = [12, 19, 23, 30]
+
+
+// for (var i=0; i<ages.length; i++) {
+//   var age = ages[i];
+
+//   if (age >= 18) {
+//     console.log(age);
+//   }
+// }
+
+
+/*
+  객체 (Object)
+  데이터와 함수의 집합
+*/
+
+
+// var cat = {
+//   // 속성 (property): 객체가 가진 데이터
+//   name: "치즈",
+//   home: null,
+//   // 메서드 (method): 속성의 값이 함수인 것
+//   sound: function () {
+//     return "야옹"
+//   }
+// }
+
+// // 객체의 속성에 접근하기
+// // console.log(cat.name); // 치즈
+// // console.log(cat["name"]) // 치즈
+// // console.log(cat.color) // undefined (정의되지 않은 속성에 접근)
+// // console.log(cat.sound()) // 야옹
+
+
+// // 속성 추가하기
+// cat.age = 2;
+// // console.log(cat.age) // 2
+
+// // 속성 수정하기
+// cat.home = "삼산동"
+// // console.log(cat.home); // 삼산동에 주인이 치즈를 입양했다
+
+// // 속성 삭제
+// delete cat.age;
+
+// console.log(cat.age); // undefined
+
+
+// Q. 하이네켄의 원산지를 출력해보세요
+
+// var beers = [
+//   { name: 'Guinness', origin: 'Ireland'},
+//   { name: 'Heineken', origin: 'Netherlands'},
+//   { name: 'Budwiser', origin: 'USA'},
+// ]
+
+// // 단 한줄로
+// console.log(beers[1].origin) // 네덜란드
+
+// // Q. 배열 순회를 통해 맥주의 이름만 대문자로 출력해보세요
+
+// for (var i=0; i<beers.length; i++) {
+//   console.log(beers[i].name.toUpperCase())
+// }
+
+
+/*
+  클래스 
+  객체 생성을 위한 템플릿 (틀)
+
+  1 클래스와 인스턴스
+  2 static 속성과 static 메서드
+  3 내장된 클래스
+  4 리터럴 표기법
+*/
+
+
+// 1 클래스와 인스턴스
+
+// class Cat {
+//   // 생성자 함수
+//   // 인스턴스의 속성을 설정하기 위해 사용된다
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+
+//   // 클래스 멤버 (속성)
+//   home = null;
+
+//   // 클래스 멤버 (메서드)
+//   sound() {
+//     return "야옹"
+//   }
+// }
+
+// // Cat의 인스턴스
+// // Cat클래스로부터 생성된 객체
+// var cat = new Cat("치즈", 2);
+
+// // console.log(cat);
+// // console.log(cat instanceof Cat) // true
+
+
+// // cat의 속성에 접근
+// console.log(cat.name) // 치즈
+// console.log(cat.age) // 2
+// console.log(cat.home) // null (상속)
+// console.log(cat.sound()) // 야옹 (상속)
+
+// // 상속: 코드의 재사용
+
+
+/*
+  2 static 속성과 static 메서드
+
+  인스턴스와 관련된 유용한 기능을 제공한다
+*/
+
+// class Cat {
+  
+//   // ... (생성자 함수, 클래스 멤버 등)
+
+//   // static 속성
+//   static family = "고양이과";
+
+//   // static 메서드
+//   static isAdult(age) {
+//     if (age < 1) {
+//       return "아기고양이"
+//     } else {
+//       return "성체고양이"
+//     }
+//   }
+// }
+
+// // 클래스 자체가 호출한다
+// console.log(Cat.family) // 고양이과
+// console.log(Cat.isAdult(2)) // 성체고양이
+
+
+// // 자바스크립트에 내장된 클래스의 static 속성
+// var pi = Math.PI;
+
+// console.log(pi); // 3.14...
+
+
+/*
+  자바스크립트에 내장된 클래스
+
+  1 문자처리: String
+  2 숫자 및 날짜: Number, Math, Date
+  3 인덱스 컬렉션: Array
+  4 에러: SyntaxError, ReferenceError 등
+  5 기타: Promise, JSON, Object
+*/
+
+
+/*
+  4 리터럴 표기법
+*/
+
+// var foo = new String("bar"); // String의 인스턴스 생성
+// console.log(foo); // String: 'bar'
+
+// var foo = "bar"; // String의 인스턴스 생성
+// console.log(foo) // bar
+
+
+// var year = new Number(2023); // Number의 인스턴스 생성
+// console.log(year) // Number: 2023
+
+// var year = 2023; // 리터럴 표기법
+// console.log(year)
+
+
+// 객체 ? 문자열 ?
+// var foo = "bar"
+
+// 객체의 일반적인 모습 { key: value }
+
+// 자바스크립트에서는 모든 것이 객체
+
+// console.log(foo.toUpperCase()) // 메서드 호출
+
+
+/*
+  Q. 다음의 조건에 맞는 클래스를 정의하고 인스턴스를 만들어보세요
+
+  클래스 이름: Beer
+
+  인스턴스의 속성: name, origin
+
+  클래스 멤버 (속성)
+  history: 기원전 3000년
+
+  클래스 멤버 (메서드)
+  recipe(제조법): 밀, 홉, 효모, 물을 섞어 만듭니다
+
+  static 속성
+  caution(경고): 지나친 음주는 돈이 많이 듭니다
+*/
+
+
+// class Beer {
+//   constructor(name, origin) {
+//     this.name = name;
+//     this.origin = origin;
+//   }
+
+//   history = "기원전 3000년"
+
+//   recipe() {
+//     return "밀, 홉, 효모, 물을 섞어 만듭니다"
+//   }
+
+//   static caution = "지나친 음주는 돈이 많이 듭니다"
+// }
+
+
+// // Beer의 인스턴스
+// var irishBeer = new Beer("Guinness", "Ireland");
+// var dutchBeer = new Beer("Heineken", "Netherlands");
+
+// console.log(irishBeer)
+// console.log(dutchBeer)
+
+// console.log(Beer.caution) // static 속성
+
+
+/*
+  에러와 에러처리
+
+  1 에러 개념
+  2 에러 처리
+  3 에러 종류
+  4 커스텀 에러
+*/
+
+
+// 1 에러 개념
+// 프로그램의 실행을 중단시킨다
+// 에러는 반드시 처리되어야 한다
+
+// console.log(foo) // ReferenceError: foo is not defined
+
+
+// 2 에러처리
+
+
+// try { // 여기서 코드를 작성한다
+
+//   // ...
+
+//   console.log(foo)
+
+// } catch (error) { // 에러 처리
+//   console.error(error);
+// }
+
+
+
+/*
+  에러의 종류
+
+  1 SyntaxError
+  2 ReferenceError
+  3 TypeError
+  4 RangeError
+  5 URIError
+*/
+
+
+// SyntaxError
+// 문법 에러
+
+// try {
+
+//   console.log(2023)) // SyntaxError: Unexpected token ')'
+
+//   // try/catch 구문은 SyntaxError를 처리할 수 없다
+//   // SyntaxError는 컴파일 에러를 발생시킨다
+
+// } catch (error) {
+//   console.error(error)
+// }
+
+
+// ReferenceError
+// 존재하지 않는 변수를 참조했을 때 발생한다
+
+// try {
+
+//   console.log(foo) // foo is not defined
+
+// } catch (error) {
+//   console.error(error);
+// }
+
+
+// TypeError
+// 변수나 인자가 유효한 타입이 아닐 때 발생한다
+
+// try {
+
+//   // setInterval(callback, ms): ms마다 callback을 실행하는 함수
+//   setInterval(null, 1000); // The "callback" argument must be of type functon.
+//   // Received null
+
+// } catch (error) {
+//   console.error(error);
+// }
+
+
+
+// RangeError
+// 값이 허용된 범위를 벗어났을 때 발생한다
+
+// try {
+//   var pi = Math.PI;
+
+//   console.log(pi.toPrecision(200)) // toPrecision() argument must be between 1 and 100
+
+// } catch (error) {
+//   console.error(error);
+// }
+
+
+// URIError
+// encodeURI 또는 decodeURI 함수가 유효하지 않은 인자를 전달받을 때 발생한다
+
+
+// try {
+
+//   // URI에 포함될 수 있는 문자: ASCII 포맷 (128개)
+
+//   decodeURI("%") // URI malformed
+
+// } catch (error) {
+//   console.error(error);
+// }
+
+
+// 4 커스텀 에러
+// 필요할 경우 에러를 발생시킨다
+// 로그인 등
+
+// try {
+//   var age = 15;
+
+//   console.log("학생:", "아저씨 기네스 한병 주세요");
+
+//   if (age < 18) {
+//     // 커스텀 에러를 던진다
+//     throw "미성년자는 술을 살 수 없습니다"
+//   }
+
+//   // 아래 코드는 실행되지 않는다
+//   console.log("직원:", "네 여기있습니다");
+
+// } catch (error) {
+//   console.error(error)
+// }
+
+
+
+/*
+  비동기 작업
+  블로킹(blocking)을 방지하기 위해 사용된다
+  예) 서버에 데이터를 요청하는 작업
+
+  1 동기 작업
+  2 비동기 작업
+*/
+
+
+// 1 동기 작업
+
+// function f() {
+//   console.log("foo")
+// }
+
+// // 코드가 순서대로 실행된다
+
+// f() // foo
+// console.log("bar") // bar
+
+
+// 2 비동기 작업
+// 서버에 데이터를 요청하는 예시
+
+// 빠른 작업부터 먼저 실행된다
+
+// 서버에 데이터를 요청하는 함수
+// function fetchData(callback) {
+//   var data = { foo: "bar" };
+
+//   setTimeout(function () {
+//     callback(data)
+//   }, 1000)
+// }
+
+
+// // 서버가 응답하는데 1초가 걸린다고 가정
+// fetchData(function (data) {
+//   console.log("서버로부터 받은 데이터:", data);
+// })
+
+// console.log("다음 작업");
+
+
+/*
+  JSON (JavaScript Object Notation)
+  자바스크립트 객체를 저장하거나 전송하기 위한 포맷
+
+  1 객체와 JSON
+  2 JSON.stringify()
+  3 JSON.parse()
+*/
+
+
+// 객체와 JSON
+
+// var o = { foo: "bar" }; // 객체 
+// var json = '{ "foo": "bar" }'; // JSON
+
+// console.log(o)
+// console.log(typeof o); // object
+
+// console.log(json)
+// console.log(typeof json) // string
+
+
+// JSON.stringify()
+// 객체를 JSON으로 변환한다
+
+// var o = { foo: "bar" };
+// var json = JSON.stringify(o);
+
+// console.log(json) // JSON
+// console.log(typeof json) // string
+
+
+// JSON.parse()
+// JSON을 객체로 변환한다
+
+// var json = '{ "foo": "bar" }';
+// var o = JSON.parse(json);
+
+// console.log(o) 
+// console.log(typeof o) // object
+
+
+
