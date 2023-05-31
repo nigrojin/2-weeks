@@ -255,7 +255,80 @@
 <script>
   // 다음의 배열을 사용해서 화면의 리스트를 만들어보세요
   var arr = ["foo", "bar", "baz"];
+
+  var list = document.getElementById("list");
+
+  for (var i=0; i<arr.length; i++) {
+    // li 엘리먼트를 생성한다
+    var li = document.createElement("li");
+
+    // li 엘리먼트의 텍스트를 설정한다
+    li.textContent = arr[i]
+
+    // list에 추가한다
+    list.appendChild(li);
+  }
 </script>
+
+
+<!-- <h1>이벤트</h1>
+<pre>
+  웹사이트 내에서 유저의 행위
+  예) 클릭, 스크롤, 터치(모바일) 등
+</pre>
+
+<button id="btn">button</button>
+
+<script>
+  var btn = document.getElementById('btn');
+
+  // addEventListener(eventName, eventHandler)
+  btn.addEventListener('click', function () {
+    alert("lol");
+  })
+</script> -->
+
+<!-- <style>
+  #canvas {
+    background-color: #000;
+  }
+</style>
+
+<h1>canvas</h1>
+<pre>
+  문서에서 자바스크립트로 그래픽을 표현할 때 사용된다
+  예) 그래프, 차트, 사진 편집, 애니메이션 등
+</pre>
+
+<canvas 
+  id="canvas" 
+  width="300" 
+  height="200" 
+>
+</canvas>
+
+<script>
+// 캔버스
+var c = document.getElementById("canvas");
+// 펜
+var ctx = c.getContext("2d");
+
+// 얼굴
+ctx.fillStyle = '#0af'; // 배경색
+// 배경색이 있는 직사각형을 그린다
+ctx.fillRect(0, 100, 100, 100); 
+
+// 눈
+ctx.fillStyle = '#000'
+ctx.fillRect(20, 120, 20, 20);
+ctx.fillRect(60, 120, 20, 20);
+
+// 입술
+ctx.fillStyle = '#000'
+ctx.fillRect(20, 160, 10, 10);
+ctx.fillRect(20, 170, 60, 10);
+ctx.fillRect(70, 160, 10, 10);
+</script>  -->
   
 </body>
 </html>
