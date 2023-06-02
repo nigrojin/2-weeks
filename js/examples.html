@@ -740,7 +740,7 @@
     })
   </script> -->
 
-  <style>
+  <!-- <style>
     #main {
       width: 300px;
       height: 300px;
@@ -810,9 +810,453 @@
 
       previousIndex = thisIndex;
     }
+  </script> -->
 
-  </script>
+  <!-- <style>
+    /* 전체 선택자 */
+    * {
+      box-sizing: border-box;
+    }
+
+    .section {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* images */
+    #container {
+      height: 200px;
+      display: inline-flex;
+      transition: transform 0.2s;
+    }
+
+    .item {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* buttons */
+    #prev-btn, #next-btn {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+    }
+
+    #prev-btn {
+      top: 0;
+      left: 0;
+    }
+
+    #next-btn {
+      top: 0;
+      right: 0;
+    }
+
+    .indicator {
+      position: absolute;
+      bottom: 0.25rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    /* toggle */
+    .hidden {
+      visibility: hidden;
+    }
+
+    .active {
+      opacity: 1;
+    }
+  </style>
+
+  <h1>Carousel</h1>
+
+  <div class="section">
+    <div id="container">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="">
+    </div>
+
+    <button id="prev-btn" class="hidden" onclick="navigateTo(-1)">
+      &#10094;
+    </button>
+    <button id="next-btn" onclick="navigateTo(1)">
+      &#10095;
+    </button>
+
+    <div class="indicator">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div> -->
+
+  <!-- <script>
+    var container = document.getElementById('container');
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    var dots = document.getElementsByClassName('dot');
+    var imageWidth = 200;
+    var previousIndex = 0;
+    var thisIndex = 0;
+
+    function navigateTo(data) {
+
+      thisIndex += data;
+      
+      console.log("이전 인덱스 값:", previousIndex);
+      console.log("현재 인덱스 값:", thisIndex);
+
+      // 컨테이너 이동
+      container.style.transform = `translateX(-${thisIndex * imageWidth}px)`;
+
+      // 다음 버튼
+      if (thisIndex === 2) { // 마지막 이미지
+        nextBtn.classList.add("hidden");
+      } else {
+        nextBtn.classList.remove("hidden");
+      }
+
+      // 이전 버튼
+      if (thisIndex === 0) { // 첫번째 이미지
+        prevBtn.classList.add("hidden")
+      } else {
+        prevBtn.classList.remove("hidden")
+      }
+
+      // indicator
+      dots[thisIndex].classList.add("active");
+      dots[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
+  <!-- <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* main image */
+    .section {
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+
+    #main {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
+
+    /* thumbnails */
+    .container {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    /* toggle class */
+    .active {
+      outline: 2px solid #0bf;
+      z-index: 10;
+    }
+  </style>
+
+  <h1>Auto Albums</h1>
+
+  <div class="section">
+    <img src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" id="main">
+
+    <div class="container">
+      <img class="thumbnail active" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="Simba">
+      <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="Timon">
+      <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="Pumbaa">
+    </div>
+  </div>
+
+  <script>
+    var thumbnails = document.getElementsByClassName('thumbnail');
+    var caption = document.getElementById('caption');
+    var main = document.getElementById('main');
+    var thisIndex = 0;
+    var previousIndex = 0;
+
+    setInterval(navigate, 3000)
+
+    function navigate() {
+      thisIndex++;
+
+      if (thisIndex === thumbnails.length) {
+        thisIndex = 0;
+      }
+
+      console.log(thisIndex);
+
+      // 메인이미지 변경
+      main.src = thumbnails[thisIndex].src;
+
+      // indicator
+      thumbnails[thisIndex].classList.add("active");
+      thumbnails[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
 
   
+  <!-- <style>
+    #main {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 300px;
+      display: flex;
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      box-sizing: border-box;
+    }
+
+    .active {
+      outline: 4px solid #0bf;
+      z-index: 10;
+    }
+  </style>
+
+  <h1>Gallery</h1>
+
+  <img src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" id="main">
+
+  <button id="prev-btn" onclick="navigateTo(-1)">Prev</button>
+  <button id="next-btn" onclick="navigateTo(1)">Next</button>
+  
+  <h3>Thumbnails</h3>
+
+  <div class="container">
+    <img class="thumbnail active" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" onclick="jumpTo(0)">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="" onclick="jumpTo(1)">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="" onclick="jumpTo(2)">
+  </div>
+
+  <script>
+    var thumbnails = document.getElementsByClassName("thumbnail");
+    var main = document.getElementById("main");
+    var previousIndex = 0;
+    var thisIndex = 0;
+
+    // 버튼 클릭
+    function navigateTo(data) {
+      thisIndex += data;
+
+      if (thisIndex > thumbnails.length - 1) {
+        thisIndex = 0;
+      }
+      if (thisIndex < 0) {
+        thisIndex = 2;
+      }
+      f()
+    }
+
+
+    // 썸네일 클릭
+    function jumpTo(data) {
+      thisIndex = data;
+      f();
+    }
+
+
+    // 로직 처리
+    function f() {
+      main.src = thumbnails[thisIndex].src;
+
+      if (previousIndex === thisIndex) {
+        return;
+      }
+
+      thumbnails[thisIndex].classList.add("active");
+      thumbnails[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
+
+  <!-- <style>
+    #form {
+      width: 24rem;
+    }
+
+    .form-group {
+      display: flex;
+    }
+
+    input {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+
+    .btn {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  
+  <form action="" id="form">
+    <h1>Newsletter</h1>
+
+    <div class="form-group">
+      <input type="email" id="input" value="John@example.com">
+      <button class="btn">Submit</button>
+    </div>
+  </form>
+
+  <div id="success-message" class="hidden">
+    <h1>
+      Thank you for subscribing us!
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+      Debitis excepturi iste, alias cupiditate corporis cumque similique expedita ut. 
+      Quo, culpa debitis. Maxime neque aperiam assumenda rerum quis explicabo nobis laboriosam!
+    </p>
+  </div>
+
+  <script>
+    var form = document.getElementById("form");
+    var successMessage = document.getElementById("success-message");
+
+    // submit 이벤트: 폼 제출
+    form.addEventListener("submit", function (e) {
+
+      e.preventDefault(); // 새로고침 방지
+
+      // AJAX 요청 (Asynchronous JavaScript And XML) 
+      // 새로고침없이 서버에 요청하는 기술
+
+      // 폼을 사라지게 하고 메시지를 보여준다
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+    })
+  </script> -->
+
+  <style>
+    .container {
+      width: 20rem;
+    }
+
+    #input {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    #list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .item {
+      padding: 0.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <h1>Live Search</h1>
+
+  <div class="container">
+    <input type="text" name="" id="input" placeholder="Search">
+    
+    <ul id="list">
+      <li class="item">Guinness</li>
+      <li class="item">Heineken</li>
+      <li class="item">Budwiser</li>
+      <li class="item">Kloud</li>
+      <li class="item">Asahi</li>
+    </ul>
+  </div>
+
+  <script>
+    var input = document.getElementById("input");
+    var items = document.getElementsByClassName("item");
+
+    // keyup 이벤트: 키보드에서 손을 뗄 때
+    input.addEventListener("keyup", function (e) {
+      // e.target: input
+      // console.log(e.target.value);
+
+      var value = e.target.value;
+
+      for (var i=0; i<items.length; i++) {
+        // 각 item의 텍스트 (맥주 이름)
+        var textContent = items[i].textContent;
+
+        // value와 textContent를 모두 소문자로 변환한다
+        // 대소문자를 구별하지 않는 검색을 한다
+        value = value.toLowerCase();
+        textContent = textContent.toLowerCase();
+
+        // indexOf(검색어): 문자열이 검색어를 포함하면
+        // 검색어의 첫번째 문자의 index를 리턴한다
+        // 검색어를 포함하지 않으면 -1을 리턴한다
+        if (textContent.indexOf(value) > -1) {
+          // textContent가 value를 포함하는 경우
+          console.log(value, textContent);
+          items[i].classList.remove("hidden");
+        } else {
+          items[i].classList.add("hidden");
+        }
+      }
+    })
+  </script>
+
+
 </body>
 </html>
