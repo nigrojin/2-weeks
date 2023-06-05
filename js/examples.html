@@ -1181,7 +1181,7 @@
     })
   </script> -->
 
-  <style>
+  <!-- <style>
     .container {
       width: 20rem;
     }
@@ -1255,8 +1255,390 @@
         }
       }
     })
-  </script>
+  </script> -->
 
+  <!-- <h1>실시간 유효성 검사</h1>
+
+  <style>
+    label {
+      display: block;
+    }
+
+    input {
+      width: 16rem;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+    }
+
+    .success {
+      color: #0bf;
+    }
+
+    .error {
+      color: #f00;
+    }
+  </style>
+  
+  <div class="container">
+    <label for="">Username</label>
+    <input type="text" id="input">
+    <p id="message">Enter username.</p>
+  </div>
+
+  <script>
+    var input = document.getElementById("input");
+    var message = document.getElementById("message");
+
+    // keyup: 키보드에서 손을 뗄 때
+    input.addEventListener("keyup", function (e) {
+      try { // 여기서 코드를 작성한다
+        // e.target: input
+        var username = e.target.value;
+
+        console.log(username);
+
+        if (!username) {
+          throw "유저이름은 필수입니다"
+        }
+
+        if (username.length < 5) {
+          throw "유저이름이 너무 짧습니다" // 커스텀 에러
+        }
+
+        // 유효한 유저이름이 아닐 때
+        // String.match(인자): 문자열에서 인자를 포함한 문자를 검색한다
+        // 정규식 (/패턴/): 문자열 검색을 위한 패턴을 제공한다
+        if (username.match(/[^a-z0-9_]/)) {
+          throw "영어 소문자와 숫자, 언더스코어만 사용 가능합니다";
+        }
+
+        console.log("사용가능한 유저이름입니다")
+
+        message.innerHTML = `<span class="success">사용 가능합니다</span>`
+
+      } catch (error) {
+        console.error(error)
+
+        message.innerHTML = `<span class="error">${error}</span>`
+      }
+    })
+  </script> -->
+  
+
+  <!-- <style>
+    #form {
+      width: 20rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+    }
+
+    button[type=submit] {
+      padding: 0.5rem 0.75rem;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .error-message {
+      color: #f00;
+      margin: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <h1>Contact Form</h1>
+
+  <form action="" id="form">
+    <div class="form-group">
+      <label for="">First name</label>
+      <input type="text" name="fname" placeholder="John">
+      <p id="fname-error" class="error-message hidden"></p>
+    </div>
+    <div class="form-group">
+      <label for="">Last Name</label>
+      <input type="text" name="lname" placeholder="Doe">
+      <p id="lname-error" class="error-message hidden"></p>
+    </div>
+    <div class="form-group">
+      <label for="">E-mail</label>
+      <input type="text" name="email" id="" placeholder="JohnDoe@example.com">
+      <p id="email-error" class="error-message hidden"></p>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    var form = document.getElementById('form');
+    // error message
+    var fnameError = document.getElementById('fname-error');
+    var lnameError = document.getElementById('lname-error');
+    var emailError = document.getElementById('email-error');
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // FormData: 폼데이터에 접근할 수 있다
+      var formData = new FormData(e.target);
+
+      var fname = formData.get('fname');
+      var lname = formData.get('lname');
+      var email = formData.get('email');
+
+      console.log(fname, lname, email);
+
+      // 이름 유효성 검사
+      if (!fname) { // 이름을 입력하지 않은 경우
+        errorHandler("이름은 필수입니다", fnameError);
+      } else if (fname.match(/[^a-zA-Z]/)) { // 유효한 이름이 아닌 경우
+        errorHandler("유효한 이름을 입력하세요", fnameError);
+      } else { // 통과
+        errorHandler(null, fnameError);
+      }
+
+      // 성 유효성 검사
+      if (!lname) {
+        errorHandler("성은 필수입니다", lnameError)
+      } else {
+        errorHandler(null, lnameError);
+      }
+
+      // 이메일 유효성 검사
+      if (!email) {
+        errorHandler("이메일은 필수입니다", emailError);
+      } else {
+        errorHandler(null, emailError)
+      }
+
+      // 에러 처리 함수
+      function errorHandler(error, container) {
+        if (error) {
+          container.classList.remove("hidden");
+          container.textContent = error;
+        } else {
+          container.classList.add("hidden");
+        }
+      }
+
+    })
+  </script> -->
+
+  <!-- <style>
+    .el {
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .opacity-100 {
+      opacity: 1;
+    }
+  </style>
+
+  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ea nisi debitis, ipsa id qui obcaecati neque, doloremque iste maxime reiciendis deleniti enim cumque quidem eius quia deserunt. Nobis, amet!</h1>
+  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ea nisi debitis, ipsa id qui obcaecati neque, doloremque iste maxime reiciendis deleniti enim cumque quidem eius quia deserunt. Nobis, amet!</h1>
+  <h1 class="el">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ea nisi debitis, ipsa id qui obcaecati neque, doloremque iste maxime reiciendis deleniti enim cumque quidem eius quia deserunt. Nobis, amet!</h1>
+  <h1 class="el">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ea nisi debitis, ipsa id qui obcaecati neque, doloremque iste maxime reiciendis deleniti enim cumque quidem eius quia deserunt. Nobis, amet!</h1>
+  <h1 class="el">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ea nisi debitis, ipsa id qui obcaecati neque, doloremque iste maxime reiciendis deleniti enim cumque quidem eius quia deserunt. Nobis, amet!</h1>
+
+  <script>
+    var els = document.getElementsByClassName("el");
+
+    window.addEventListener("scroll", function () {
+
+      // 뷰포트의 높이
+      var viewPortHeight = window.innerHeight;
+
+      for (var i=0; i<els.length; i++) {
+
+        // 뷰포트 탑과 엘리먼트 탑사이의 거리
+        var y = els[i].getBoundingClientRect().y;
+  
+        console.log(y);
+  
+        if (y < viewPortHeight - 100) { // 뷰포트에 충분히 진입했을 때 
+          els[i].classList.add("opacity-100");
+        }
+      }
+
+    })
+  </script> -->
+
+
+  <!-- <h1>drag and drop</h1>
+
+  <style>
+    #drop-zone {
+      border: 4px dashed #ddd;
+      width: 200px;
+      height: 100px;
+      padding: 1rem;
+    }
+  </style>
+
+  <div id="drop-zone">
+    <p><i>여기</i>에 파일을 드래그 앤 드롭 하세요</p>
+  </div>
+
+  <script>
+    var dropZone = document.getElementById("drop-zone");
+
+    // dragover: 드래그 중
+    dropZone.addEventListener("dragover", dragOverHandler);
+    // drop: 드랍 했을 때
+    dropZone.addEventListener("drop", dropHandler);
+
+    function dragOverHandler(e) {
+      e.preventDefault(); // 브라우저가 파일을 열지 않음;
+
+      console.log("드래그 중")
+    }
+
+    function dropHandler(e) {
+      e.preventDefault() // 브라우저가 파일을 열지 않는다
+
+      // 유저가 드랍한 파일리스트
+      var files = Array.from(e.dataTransfer.files);
+
+      console.log(files);
+
+      // AJAX 요청
+      // ...
+
+      alert("제출되었습니다")
+    }
+  </script> -->
+
+
+  <!-- <h1>다크모드</h1>
+
+  <style>
+    .dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+
+  <h1>Theme</h1>
+
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    Mollitia voluptas architecto optio totam dolore perspiciatis qui nihil?
+    Nesciunt eligendi id impedit, expedita earum, enim veniam laudantium,
+    pariatur quasi repellendus est.
+  </p>
+
+  <input type="checkbox" id="checkbox" name="">
+  <label for="checkbox">
+    Dark Mode
+  </label>
+
+  <script>
+    var checkbox = document.getElementById("checkbox");
+
+    // 페이지가 로드되었을 때
+    // localStorage.getItem(key): 로컬스토리지에서 데이터를 가져온다
+    var isDarkMode = localStorage.getItem("darken");
+
+    console.log(isDarkMode)
+
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+      checkbox.checked = true;
+    }
+
+    // change: checkbox의 경우 체크 상태가 바뀌는 것
+    checkbox.addEventListener("change", function (e) {
+      // e.target: checkbox
+      var checked = e.target.checked;
+
+      console.log(checked);
+
+      if (checked) {
+        document.body.classList.add('dark-mode')
+
+        // localStorage.setItem(key, value)
+        // 로컬 스토리지에 데이터를 저장한다
+        localStorage.setItem("darken", new Date().toLocaleString());
+      } else {
+        document.body.classList.remove("dark-mode")
+
+        // localStorage.removeItem(key)
+        // 로컬 스토리지에서 데이터를 삭제한다
+        localStorage.removeItem("darken");
+      }
+    })
+  </script> -->
+
+  <h1>더 이상 보지 않기</h1>
+
+  <style>
+    #promotion {
+      background-color: #eee;
+      padding: 1rem;
+    }
+
+    #close-btn {
+      float: right;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #block-btn {
+      padding: 0.5rem 0.75rem;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+
+  <div id="promotion">
+    <span id="close-btn">&times;</span>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    </p>
+    <button id="block-btn">Do not show anymore</button>
+  </div>
+
+  <script>
+    var closeBtn = document.getElementById('close-btn');
+    var blockBtn = document.getElementById('block-btn');
+    var promotion = document.getElementById('promotion');
+
+    // 페이지가 로드되었을 때
+    if (localStorage.getItem("blockedAt")) {
+      promotion.classList.add("hidden");
+    }
+
+    // 닫기 버튼을 클릭했을 때
+    closeBtn.addEventListener("click", function () {
+      promotion.classList.add("hidden");
+    })
+
+    // 블락버튼을 클릭했을 때
+    blockBtn.addEventListener("click", function () {
+      promotion.classList.add("hidden");
+      // 로컬 스토리지에 블락정보를 저장한다
+      localStorage.setItem("blockedAt", new Date().toLocaleString());
+    })
+  </script>
 
 </body>
 </html>
