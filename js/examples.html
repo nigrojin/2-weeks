@@ -1584,7 +1584,7 @@
     })
   </script> -->
 
-  <h1>더 이상 보지 않기</h1>
+  <!-- <h1>더 이상 보지 않기</h1>
 
   <style>
     #promotion {
@@ -1638,7 +1638,395 @@
       // 로컬 스토리지에 블락정보를 저장한다
       localStorage.setItem("blockedAt", new Date().toLocaleString());
     })
+  </script> -->
+
+  <!-- <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    #canvas {
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+  </style>
+
+  <h1>JS Image Editor</h1>
+
+  <p>
+    <input type="file" name="" id="file-input">
+  </p>
+
+  <canvas id="canvas"></canvas>
+
+  <nav>
+    <label for="brightness">Brigtness</label>
+    <input type="range" name="brightness" id="brightness" min="0" max="200" value="100">
+  
+    <label for="saturation">Saturation</label>
+    <input type="range" name="saturation" id="saturation" min="0" max="200" value="100">
+  
+    <label for="inversion">Inversion</label>
+    <input type="range" name="inversion" id="inversion" min="0" max="100" value="0">
+  
+    <label for="blur">Blur</label>
+    <input type="range" name="blur" id="blur" min="0" max="10" value="0">
+  </nav>
+
+  <script>
+    // 캔버스와 ctx(펜)
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    // 파일 input
+    var fileInput = document.getElementById('file-input');
+    // 필터 input
+    var brightnessInput = document.getElementById('brightness');
+    var saturationInput = document.getElementById('saturation');
+    var inversionInput = document.getElementById('inversion');
+    var blurInput = document.getElementById('blur');
+    // 이미지 엘리먼트 생성
+    var imgElement = new Image();
+    // filter 객체
+    var filter = {};
+
+    // 파일 업로드 이벤트
+    fileInput.addEventListener("change", function (e) {
+      var file = e.target.files[0]; // 파일 객체
+      // blob객체를 생성하고 blob url을 리턴한다
+      var src = URL.createObjectURL(file);
+
+      // blob URL을 이미지의 src로 사용한다
+      imgElement.src = src;
+    })
+
+    // 이미지가 캔버스에 로드되었을 때
+    imgElement.addEventListener("load", function () {
+
+      // 캔버스의 크기를 이미지 크기에 맞춘다
+      canvas.width = imgElement.width;
+      canvas.height = imgElement.height;
+
+      // 캔버스 초기화
+      initialize();
+
+      // 캔버스에 이미지를 표현한다
+      drawImage();
+    })
+
+    // 각각의 필터를 조정한다
+    brightnessInput.addEventListener('change', (e) => {
+      applyFilter('brightness', e.target.value, '%');
+    })
+
+    saturationInput.addEventListener('change', (e) => {
+      applyFilter('saturate', e.target.value, '%');
+    })
+
+    inversionInput.addEventListener('change', (e) => {
+      applyFilter('invert', e.target.value, '%');
+    })
+
+    blurInput.addEventListener('change', (e) => {
+      applyFilter('blur', e.target.value, 'px');
+    })
+
+    function drawImage() {
+      // drawImage(이미지, left, top): 캔버스에 이미지를 표현한다
+      ctx.drawImage(imgElement, 0, 0)
+    }
+
+    // 이미지에 필터를 적용하는 함수
+    function applyFilter(name, value, unit) {
+      filter[name] = value + unit;
+
+      var filter_list = [];
+
+      for (key in filter) {
+        filter_list.push(`${key}(${filter[key]})`);
+      }
+
+      // 필터 데이터를 캔버스가 요구하는 형식에 맞게 문자열 타입으로 변환한다
+      ctx.filter = filter_list.join(" ");
+
+      // 이미지를 다시 표현해야 한다
+      drawImage();
+    }
+
+    // 필터 input과 필터 객체를 초기화 하는 함수
+    function initialize() {
+      brightnessInput.value = 100;
+      saturationInput.value = 100;
+      inversionInput.value = 0;
+      blurInput.value = 0;
+
+      filter = {};
+    }
+
+  </script> -->
+
+
+  <!-- <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ddd;
+    }
+
+    #container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 640px;
+      margin: auto;
+    }
+
+    textarea { 
+      height: 12rem;
+      padding: 1rem;
+      border: none;
+      box-shadow: 0 0 5px #888;
+      outline: none;
+      resize: none;
+    }
+    
+    #add-btn {
+      /* position */
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      /* size */
+      width: 4rem;
+      height: 4rem;
+      /* display */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* style */
+      background-color: #aaa;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 4rem;
+    }
+
+    #add-btn:hover {
+      background-color: #888;
+    }
+  </style>
+
+  <h1>Sticky Notes</h1>
+
+  <div id="container"></div>
+  <button id="add-btn">+</button>
+
+  <script>
+    var container = document.getElementById("container");
+    var addBtn = document.getElementById("add-btn");
+
+    // 새로운 노트 추가
+    addBtn.addEventListener("click", addNote);
+    // 페이지 로드 이벤트
+    window.addEventListener("DOMContentLoaded", getNotes);
+
+    // 노트 생성
+    function addNote() {
+      var notes = getDocs();
+      var newNote = { id: "n" + Date.now(), content: "" };
+
+      notes.push(newNote); // 임시 저장소에 노트를 추가한다
+
+      // 로컬 스토리지를 동기화한다
+      saveDoc(notes);
+
+      createNoteElement(newNote.id, newNote.content);
+    }
+
+    // 노트를 가져오는 함수
+    function getNotes() {
+      var notes = getDocs();
+
+      // 노트 엘리먼트를 생성한다
+      for (var i=0; i<notes.length; i++) {
+        createNoteElement(notes[i].id, notes[i].content);
+      }
+    }
+
+    // 노트 편집
+    function editNote(id, content) {
+      var notes = getDocs();
+
+      for (var i=0; i<notes.length; i++) {
+        if (notes[i].id === id) {
+          notes[i].content = content;
+        }
+      }
+
+      // 로컬스토리지 동기화
+      saveDoc(notes);
+    }
+
+    // 노트 삭제
+    function deleteNote(id, noteElement) {
+      var notes = getDocs();
+
+      for (var i=0; i<notes.length; i++) {
+        if (notes[i].id === id) {
+          notes.splice(i, 1); // 배열의 아이템 삭제
+        }
+      }
+
+      saveDoc(notes);
+
+      // 뷰 업데이트 (노트 엘리먼트 제거)
+      // container의 자식을 제거한다
+      container.removeChild(noteElement);
+    }
+
+    // 노트 엘리먼트 생성
+    function createNoteElement(id, content) {
+      var noteElement = document.createElement("textarea");
+
+      noteElement.value = content;
+      // 엘리먼트를 생성하고 이벤트리스너를 연결한다
+      noteElement.addEventListener('change', (e) => editNote(id, e.target.value));
+      noteElement.addEventListener('dblclick', (e) => deleteNote(id, e.target));
+
+      // container의 첫번째 엘리먼트로 추가한다
+      container.prepend(noteElement);
+    };
+
+    // 로컬 스토리지에서 노트 데이터를 가져오는 함수
+    function getDocs() {
+      // 로컬스토리지에 노트 저장소가 없으면 빈 저장소를 생성한다
+      if (!localStorage.getItem("notes")) {
+        localStorage.setItem("notes", "[]");
+      }
+
+      // 객체로 변환을 한 다음 리턴한다
+      return JSON.parse(localStorage.getItem("notes"));
+    };
+
+    // 로컬 스토리지에 노트 데이터를 저장하는 함수
+    function saveDoc(notes) {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }
+  </script> -->
+
+
+  <nav>
+    <ul>
+      <li>
+        <a href="#home">Home</a>
+      </li>
+      <li>
+        <a href="#posts">Posts</a>
+      </li>
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <div id="root"></div>
+
+  <script>
+    // hashchange: hash가 바뀌는 이벤트
+    window.addEventListener("hashchange", () => {
+      router(location.hash);
+    })
+
+    // 페이지가 로드 되었을 때
+    window.addEventListener("load", () => {
+      router(location.hash);
+    })
+
+    // 요청 url과 적절한 컴포넌트를 연결시킨다
+    function router(hash) {
+      var url = hash.substr(1); // 문자열에서 hash(#)를 제거한다
+
+      console.log(url);
+
+      // 라우트 리스트
+      var routes = [
+        { path: 'home', element: Home },
+        { path: 'posts', element: Posts },
+        { path: 'post/2', element: Post },
+        { path: 'contact', element: Contact },
+      ]
+
+      for (var i=0; i<routes.length; i++) {
+        if (routes[i].path === url) {
+          document
+            .getElementById("root")
+            .innerHTML = routes[i].element();
+        }
+      }
+    }
+
+    // 홈
+    function Home() {
+      return (`
+        <h1>Home</h1>
+        <p>Welcome to my blog.</p>
+      `);
+    }
+
+    // 게시물 목록
+    function Posts() {
+      return (`
+        <h1>Posts</h1>
+        <ul>
+          <li>
+            <a href="#post/2">Second post</a>
+          </li>  
+          <li>
+            First post
+          </li>  
+        </ul>
+      `)
+    }
+
+    // 게시물 보기
+    function Post() {
+
+      // AJAX 
+      var DATA = { 
+        id: 2, 
+        contents: `
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          Neque, deserunt quae, magnam similique, ducimus ex unde minima corrupti sit 
+          voluptatibus architecto eos provident aliquam iure placeat dolores in laborum delectus.`,
+        createdAt: '19 April, 2023'
+      }
+      
+      return (`
+        <h1>Second post</h1>
+        <small>
+          posted <i>${DATA.createdAt}</i>
+        </small>
+        <p>${DATA.contents}</p>
+      `)
+    }
+
+    // 컨택
+    function Contact() {
+      return (`
+        <h1>Contact</h1>
+        <p>john@example.com</p>
+      `)
+    }
   </script>
+  
 
 </body>
 </html>

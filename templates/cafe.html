@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>the Cafe</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 카페 홈페이지에 어울리는 폰트 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <style>
+    body {
+      font-family: "Inconsolata", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-200">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 p-2 w-full z-10 bg-black">
+    <ul class="flex">
+      <li class="w-1/4">
+        <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">HOME</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#about" class="block p-2 text-center text-white hover:bg-white hover:text-black">ABOUT</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#menu" class="block p-2 text-center text-white hover:bg-white hover:text-black">MENU</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#where" class="block p-2 text-center text-white hover:bg-white hover:text-black">WHERE</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN IMAGE -->
+  <div class="h-[500px] bg-[url('https://www.w3schools.com/w3images/coffeehouse.jpg')] bg-cover bg-center grayscale-[50%]">
+    <div class="h-[450px] flex flex-col justify-center">
+      <h1 class="text-8xl text-center text-white">
+        the <br>
+        <span class="inline-block mt-8">
+          Cafe
+        </span>
+      </h1>
+    </div>
+    <div class="mt-4 px-4 flex justify-between">
+      <span class="bg-black text-sm text-white px-2 invisible md:visible">Open from 6am to 5pm</span>
+      <span class="text-sm text-white">15 Adr street, 5015</span>
+    </div>
+  </div>
+  
+</body>
+</html>
