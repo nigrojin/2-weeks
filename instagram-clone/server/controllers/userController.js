@@ -107,7 +107,59 @@ exports.create = [
 ];
 
 // 유저 정보 수정
-exports.update = [];
+exports.update = [
+  // 프로필 사진(파일) 처리
+  fileHandler('profiles').single('avatar'),
+  // 유효성 검사
+  // 입력데이터가 있을 경우 유효성 검사
+  isValidUsername().custom(usernameInUse).optional(),
+  isValidEmail().custom(emailInUse).optional(),
+  async (req, res, next) => {
+    try {
+      // 유효성 검사 결과
+      const errors = validationResult(req);
+
+      // 검사 실패
+      if (!errors.isEmpty()) {
+        const err = new Error();
+        err.errors = errors.array();
+        err.status = 400; // 400 BadRequest
+        throw err;
+      }
+
+      // req.user: 로그인 유저
+      const _user = req.user;
+
+      // 프로필 사진을 업로드한 경우
+      if (req.file) { // req.file: 클라이언트가 전송한 파일
+        _user.avatar = req.file.filename;
+      }
+
+      // 로그인 유저의 정보 중 클라이언트가 수정 요청을 한 정보만 업데이트한다
+      Object.assign(_user, req.body);
+
+      await _user.save(); // 변경사항을 저장한다
+
+      // 토큰을 재발급한다
+      const token = _user.generateJWT();
+
+      const user = {
+        username: _user.username,
+        email: _user.email,
+        fullName: _user.fullName,
+        avatar: _user.avatar,
+        bio: _user.bio,
+        token
+      }
+
+      // 업데이트한 유저와 토큰을 전송한다
+      res.json({ user })
+
+    } catch (error) {
+      next(error)
+    }
+  }
+];
 
 // 로그인
 exports.login = [
